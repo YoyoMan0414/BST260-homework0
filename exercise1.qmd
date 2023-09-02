@@ -1,0 +1,54 @@
+---
+title: "01-quarto"
+author: "Man Jiang"
+format: html
+editor: visual
+---
+
+## Exercises
+
+### 1.
+
+When a = 1, b = -1, and c = -2, the solutions to the quadratic function $f(x) = \alpha x^2 + bx + c = 0$ are
+
+```{r echo = FALSE}
+
+a <- 1
+b <- -1
+c <- -2
+
+# discriminant
+D <- b^2 - 4*a*c
+
+#different scenarios
+if (D > 0) {
+  #two solutions
+  sol1 <- (-b + sqrt(D)) / (2*a)
+  sol2 <- (-b - sqrt(D)) / (2*a)
+  sols <- c(sol1, sol2)
+} else if (D == 0) {
+  #one solution
+  sol <- -b / (2*a)
+  sols <- sol
+} else {
+  #zero (or complex) solution
+  sols <- '0 solution'
+}
+
+sols
+
+```
+
+There are two real and different roots since the discriminant, which equals to $b^2-4ac$, in this case is larger than 0. The function enclosed also takes in consideration when discriminant is smaller than or equal to 0, which corresponds to two complex roots and one real root respectively.
+
+### 2.
+
+To confirm the result, a plot is made below.
+
+```{r echo = FALSE}
+x <- seq(-5, 5, length = 300)
+plot(x, a*x^2 + b*x + c, type="l")
+abline(h=0, lty=2)
+```
+
+The parabola of the function has x = -1 and x = 2 when y = 0, which validates our conclusion in 1.
